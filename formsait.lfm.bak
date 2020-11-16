@@ -1,0 +1,362 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 185
+  Height = 515
+  Top = 105
+  Width = 763
+  BorderStyle = bsSingle
+  Caption = 'SAIT - Simple Annotation Image Tool'
+  ClientHeight = 515
+  ClientWidth = 763
+  Icon.Data = {
+    7E04000000000100010010100000010020006804000016000000280000001000
+    0000200000000100200000000000000400006400000064000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    00000000000000000000000000D8000000EC000000AB00000000000000000000
+    0000000000000000000000000000000000AB000000EC000000D9000000000000
+    00000000000000000000000000EB0000003D0000001700000000000000090000
+    0028000000280000000800000000000000170000003D000000EC000000000000
+    00000000000000000000000000AA0000001C0000005B000000C0000000FA0000
+    00F0000000F0000000FA000000BF0000005A0000001C000000AB000000000000
+    000000000000000000000000003C000000D4000000FA000000EA0000004C0000
+    0002000000020000004D000000EA000000FA000000D30000003B000000000000
+    0000000000000000006D000000EE00000062000000E00000004B0000000C0000
+    0084000000830000000B0000004D000000DF00000062000000EE0000006C0000
+    000000000088000000DE0000002C00000022000000F100000001000000840000
+    00FF000000FF0000008300000002000000F1000000210000002C000000DE0000
+    008700000088000000DE0000002C00000022000000F100000001000000850000
+    00FF000000D60000002A00000002000000F1000000210000002C000000DE0000
+    0088000000000000006F000000EE00000062000000E0000000490000000C0000
+    00850000007C000000000000004B000000E000000062000000EE0000006E0000
+    000000000000000000000000003C000000D5000000FA000000E90000004A0000
+    0002000000020000004B000000E9000000FA000000D50000003C000000000000
+    00000000000000000000000000AA0000001C0000005E000000C2000000FB0000
+    00F0000000F0000000FB000000C10000005D0000001C000000AB000000000000
+    00000000000000000000000000EB0000003D00000017000000000000000A0000
+    0028000000280000000A00000000000000170000003D000000EC000000000000
+    00000000000000000000000000D8000000EC000000AB00000000000000000000
+    0000000000000000000000000000000000AB000000EC000000D9000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000FFFF0000FFFF0000C7E30000C4230000C0030000C0030000800100000000
+    00000000000080410000C003B900C0036900C4230000C7E30000FFFF0000FFFF
+    0000
+  }
+  OnCreate = FormCreate
+  OnShow = FormShow
+  LCLVersion = '2.0.2.0'
+  object btnAnterior: TButton
+    Left = 480
+    Height = 25
+    Hint = 'Select the first previous image in the queue.'#13#10'Also saves the current annotation.'
+    Top = 128
+    Width = 32
+    Anchors = [akTop, akRight]
+    Caption = '<<'
+    OnClick = btnAnteriorClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
+  end
+  object btnAvante: TButton
+    Left = 520
+    Height = 25
+    Hint = 'Select the first next image in the queue.'#13#10'Also saves the current annotation.'
+    Top = 128
+    Width = 32
+    Anchors = [akTop, akRight]
+    Caption = '>>'
+    OnClick = btnAvanteClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
+  end
+  object txtDir: TEdit
+    Left = 480
+    Height = 23
+    Top = 18
+    Width = 184
+    Anchors = [akTop, akRight]
+    ReadOnly = True
+    TabOrder = 3
+  end
+  object btnOpenDir: TButton
+    Left = 673
+    Height = 25
+    Hint = 'Select the directory containing the images to be tagged.'#13#10'The .xml files will be saved in the same location.'
+    Top = 16
+    Width = 75
+    Anchors = [akTop, akRight]
+    Caption = 'Open DIR'
+    OnClick = btnOpenDirClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 0
+  end
+  object gbAnnotation: TGroupBox
+    Left = 480
+    Height = 74
+    Hint = 'Select the pattern where annotations will be saved.'
+    Top = 48
+    Width = 144
+    Anchors = [akTop, akRight]
+    Caption = 'Annotation'
+    ClientHeight = 54
+    ClientWidth = 140
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 4
+    object rdbPV2012: TRadioButton
+      Left = 8
+      Height = 19
+      Top = 5
+      Width = 103
+      Caption = 'Pascal Voc 2012'
+      TabOrder = 0
+    end
+    object rdbYolo: TRadioButton
+      Left = 8
+      Height = 19
+      Top = 29
+      Width = 44
+      Caption = 'Yolo'
+      TabOrder = 1
+    end
+  end
+  object btnSalvar: TButton
+    Left = 480
+    Height = 25
+    Hint = 'Saves the current annotation.'
+    Top = 194
+    Width = 48
+    Anchors = [akTop, akRight]
+    Caption = 'Save'
+    OnClick = btnSalvarClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 5
+  end
+  object bgPattern: TGroupBox
+    Left = 632
+    Height = 73
+    Hint = 'Select the form of annotation.'#13#10'BoundBox for object classification and recognition.'#13#10'Polygonal for semantic segmentation.'
+    Top = 48
+    Width = 116
+    Anchors = [akTop, akRight]
+    Caption = 'Pattern'
+    ClientHeight = 53
+    ClientWidth = 112
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 6
+    object rdbSquare: TRadioButton
+      Left = 8
+      Height = 19
+      Top = 5
+      Width = 56
+      Caption = 'Square'
+      TabOrder = 0
+    end
+    object rdbPoligon: TRadioButton
+      Left = 8
+      Height = 19
+      Top = 29
+      Width = 64
+      Caption = 'Polygon'
+      TabOrder = 1
+    end
+  end
+  object chlImagens: TListBox
+    Left = 480
+    Height = 258
+    Hint = 'Click to select a particular image.'
+    Top = 224
+    Width = 268
+    Anchors = [akTop, akRight, akBottom]
+    ItemHeight = 0
+    OnClick = chlImagensClick
+    ParentShowHint = False
+    ShowHint = True
+    Sorted = True
+    TabOrder = 7
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 492
+    Width = 763
+    Panels = <    
+      item
+        Width = 100
+      end    
+      item
+        Width = 100
+      end    
+      item
+        Width = 100
+      end    
+      item
+        Width = 80
+      end    
+      item
+        Width = 100
+      end    
+      item
+        Width = 170
+      end    
+      item
+        Width = 130
+      end    
+      item
+        Width = 145
+      end    
+      item
+        Width = 100
+      end>
+    SimplePanel = False
+  end
+  object btnLimpar: TButton
+    Left = 581
+    Height = 25
+    Hint = 'Delete all annotation of the current image.'
+    Top = 194
+    Width = 48
+    Anchors = [akTop, akRight]
+    Caption = 'ClearA'
+    OnClick = btnLimparClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 9
+  end
+  object btnHelp: TBitBtn
+    Left = 680
+    Height = 25
+    Hint = 'Opens the help file.'
+    Top = 194
+    Width = 68
+    Anchors = [akTop, akRight]
+    DefaultCaption = True
+    Kind = bkHelp
+    OnClick = btnHelpClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 10
+  end
+  object ScrollBox1: TScrollBox
+    Left = 16
+    Height = 466
+    Top = 16
+    Width = 444
+    HorzScrollBar.Increment = 50
+    HorzScrollBar.Page = 90
+    VertScrollBar.Increment = 50
+    VertScrollBar.Page = 90
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    AutoSize = True
+    ClientHeight = 462
+    ClientWidth = 440
+    ParentShowHint = False
+    TabOrder = 11
+    object showImage: TImage
+      Cursor = crHandPoint
+      Left = 0
+      Height = 462
+      Top = 0
+      Width = 440
+      Anchors = [akTop, akLeft, akRight, akBottom]
+      AutoSize = True
+      OnClick = showImageClick
+      OnDblClick = showImageDblClick
+      OnMouseMove = showImageMouseMove
+      OnMouseWheel = showImageMouseWheel
+      OnMouseWheelDown = showImageMouseWheelDown
+      OnMouseWheelUp = showImageMouseWheelUp
+    end
+  end
+  object btnDel: TButton
+    Left = 631
+    Height = 25
+    Hint = 'Delete the current image and its annotation file.'
+    Top = 194
+    Width = 48
+    Anchors = [akTop, akRight]
+    Caption = 'DEL'
+    OnClick = btnDelClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 12
+  end
+  object btnClearLastPoint: TButton
+    Left = 531
+    Height = 25
+    Hint = 'Delete the last marked annotation point.'
+    Top = 194
+    Width = 48
+    Anchors = [akTop, akRight]
+    Caption = 'ClearLP'
+    OnClick = btnClearLastPointClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 13
+  end
+  object chkMasks: TCheckBox
+    Left = 688
+    Height = 19
+    Hint = 'Check this option to generate annotation mask files.'
+    Top = 143
+    Width = 53
+    Anchors = [akTop, akRight]
+    Caption = 'Masks'
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 14
+  end
+  object chCross: TCheckBox
+    Left = 688
+    Height = 19
+    Hint = 'Check this option to display the point alignment cross.'
+    Top = 124
+    Width = 49
+    Anchors = [akTop, akRight]
+    Caption = 'Cross'
+    Checked = True
+    ParentShowHint = False
+    ShowHint = True
+    State = cbChecked
+    TabOrder = 15
+  end
+  object btnCrop: TButton
+    Left = 480
+    Height = 25
+    Hint = 'Click here to crop each object of the current image after the annotation. '#13#10'Only recognizes boundboxes.'
+    Top = 163
+    Width = 48
+    Anchors = [akTop, akRight]
+    Caption = 'Crop'
+    OnClick = btnCropClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 16
+  end
+  object btnCropAllInList: TButton
+    Left = 531
+    Height = 25
+    Hint = 'Click here to crop each object of all images lists in the current directory after performing all annotation. '#13#10'Only recognizes boundboxes.'
+    Top = 163
+    Width = 48
+    Anchors = [akTop, akRight]
+    Caption = 'CropA'
+    OnClick = btnCropAllInListClick
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 17
+  end
+  object SelectDirectoryDialog1: TSelectDirectoryDialog
+    left = 536
+    top = 208
+  end
+end

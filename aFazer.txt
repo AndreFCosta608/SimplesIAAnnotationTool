@@ -1,0 +1,3 @@
+3) Hotkeys
+4) Zoom
+5) Criar botão para detalhes da imagem.
